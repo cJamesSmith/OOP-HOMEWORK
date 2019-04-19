@@ -1,9 +1,9 @@
 // name: castle.h
-// author: Amrzs
-// date: 2014/03/29
+// author: Xianwei C.
+// date: 2019.3.30
  
-#ifndef CASTLE_H
-#define CASTLE_H
+#ifndef __CASTLE_H
+#define __CASTLE_H
  
 #include <string>
 #include <vector>

@@ -1,9 +1,9 @@
 // name: room.h
-// author: Amrzs
-// date: 2014/03/29
+// author: Xianwei C.
+// date: 2019.3.30
  
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef __ROOM_H
+#define __ROOM_H
  
 #include <string>
 #include <map>
@@ -31,4 +31,4 @@ public:
     void setExit(string exitName, Room*);
 };
  
-#endif //ROOM_H
+#endif

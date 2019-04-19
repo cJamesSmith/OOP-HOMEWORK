@@ -1,10 +1,11 @@
 // name: castle.cpp
-// author: Amrzs
-// date: 2014/03/29
+// author: Xianwei C.
+// date: 2019.3.30
  
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
  
 #include "castle.h"
  
@@ -23,7 +24,6 @@ Castle::~Castle(){
         rooms.pop_back();
         delete (*it);        
     }
-    cout << "The castle gone!" << endl;
 }
  
 vector<string> Castle::exitNames = {
@@ -54,7 +54,13 @@ void Castle::run(){
     while(1){ //don't like for(;;)
         nowRoom->printInfo();
         cin >> go >> exitName;
-        if(!nowRoom->existExit(exitName)){
+        if ('go' != go)
+        {
+            cout << go << " is a bad command! Please try again!" << endl;
+            continue;
+        }
+        if(!nowRoom->existExit(exitName))
+        {
             cout << "There isn't a exit named "
                 << exitName << "." << endl;
             continue;
@@ -63,7 +69,22 @@ void Castle::run(){
         Room *newRoom = nowRoom->goExit(exitName);
         if(!newRoom){
             cout << "Please enter a new room name: ";
-            cin >> roomName;
+            char str[5] = "";
+            srand(time(NULL));
+            int i;
+            for (int i = 0; i < 4; ++i)
+            {
+            	switch ((rand() % 2))
+            	{
+            		case 1:
+            		str[i] = 'A' + rand() % 26;
+            		break;
+            		default:
+            		str[i] = 'a' + rand() % 26;
+            	}
+            }
+            str[4] = '\0';
+            roomName = str;
             newRoom = addRoom(roomName);
             nowRoom->setExit(exitName, newRoom);
             newRoom->setExit(oppoExit(exitName), nowRoom);

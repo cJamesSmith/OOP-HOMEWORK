@@ -1,6 +1,6 @@
 // name: main.cpp
-// author: Amrzs
-// date: 2014/03/30
+// author: Xianwei C.
+// date: 2019.3.30
  
 #include "castle.h"
  

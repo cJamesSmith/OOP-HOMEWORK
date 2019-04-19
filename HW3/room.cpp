@@ -1,6 +1,6 @@
 // name: room.cpp
-// author: Amrzs
-// date: 2014/03/29
+// author: Xianwei C.
+// date: 2019.3.30
  
 #include <iostream>
 #include <string>
@@ -32,9 +32,8 @@ Room::Room(string name, vector<string> exitNames, bool safe):
     }
 }
  
-Room::~Room(){
- 
-    cout << "Room: " << name << " gone" << endl;
+Room::~Room()
+{
 }
  
  
@@ -53,7 +52,8 @@ bool Room::existExit(string exitName){
     return 1 == exitMap.count(exitName);
 }
  
-Room *Room::goExit(string exitName){
+Room *Room::goExit(string exitName)
+{
  
     return exitMap[exitName]; //it's dangerous, it must after existExit()
 }
