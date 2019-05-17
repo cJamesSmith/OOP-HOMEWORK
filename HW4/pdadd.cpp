@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
 	if (argc > 1)
 	{
         delete_date(DIARY_NAME, argv[1]);
-	   add_new_diary(DIARY_NAME, argv[1]);
+		add_new_diary(DIARY_NAME, argv[1]);
 	}
     else
     {

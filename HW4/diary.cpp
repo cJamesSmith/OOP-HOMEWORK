@@ -1,9 +1,10 @@
 #include "diary.h"
+#include <unistd.h>
 
 void print_all(std::string diary_name)
 {
 	std::fstream fp;
-	fp.open(diary_name, std::ios::in);
+	fp.open(diary_name.c_str(), std::ios::in);
 	std::string line_buff;
 	std::getline(fp, line_buff);
 	while (!fp.eof())
@@ -19,9 +20,9 @@ void print_all(std::string diary_name)
 void create_new_file(std::string diary_name)
 {
 	std::fstream fp;
-	if (_access(diary_name.c_str(), 0) == -1)
+	if (access(diary_name.c_str(), 0) == -1)
 	{
-		fp.open(diary_name, std::ios::out);
+		fp.open(diary_name.c_str(), std::ios::out);
 		fp << std::endl;
 		fp.close();
 	}
@@ -32,8 +33,8 @@ void add_new_diary(std::string diary_name, std::string date)
 {
 	std::fstream fp;
 	std::fstream fp_tmp;
-	fp.open(diary_name, std::ios::in);
-	fp_tmp.open(diary_name + "temp", std::ios::out);
+	fp.open(diary_name.c_str(), std::ios::in);
+	fp_tmp.open((diary_name + "temp").c_str(), std::ios::out);
 	std::string line_buff;
 	std::getline(fp, line_buff);
 	while (!fp.eof())
@@ -71,7 +72,7 @@ void add_new_diary(std::string diary_name, std::string date)
 void list_all_date(std::string diary_name)
 {
 	std::fstream fp;
-	fp.open(diary_name, std::ios::in);
+	fp.open(diary_name.c_str(), std::ios::in);
 	std::string line_buff;
 	std::getline(fp, line_buff);
 	while (!fp.eof())
@@ -90,8 +91,8 @@ void delete_date(std::string diary_name, std::string date)
 {
 	std::fstream fp;
 	std::fstream fp_tmp;
-	fp.open(diary_name, std::ios::in);
-	fp_tmp.open(diary_name + "temp", std::ios::out);
+	fp.open(diary_name.c_str(), std::ios::in);
+	fp_tmp.open((diary_name + "temp").c_str(), std::ios::out);
 	std::string line_buff;
 	std::getline(fp, line_buff);
 	while (!fp.eof())
@@ -119,7 +120,7 @@ void delete_date(std::string diary_name, std::string date)
 void print_date(std::string diary_name, std::string date)
 {
 	std::fstream fp;
-	fp.open(diary_name, std::ios::in);
+	fp.open(diary_name.c_str(), std::ios::in);
 	std::string line_buff;
 	std::getline(fp, line_buff);
 	while (!fp.eof())
